@@ -26,4 +26,4 @@ jobs:
         with:
           context: docker/frps
           push: true
-          tags: tianxiadys/frps:0.61.1,tianxiadys/frps:latest
+          tags: tianxiadys/frps:0.61.1a,tianxiadys/frps:latest

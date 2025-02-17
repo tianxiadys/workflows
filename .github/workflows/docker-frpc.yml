@@ -26,4 +26,4 @@ jobs:
         with:
           context: docker/frpc
           push: true
-          tags: tianxiadys/frpc:0.61.1,tianxiadys/frpc:latest
+          tags: tianxiadys/frpc:0.61.1a,tianxiadys/frpc:latest
