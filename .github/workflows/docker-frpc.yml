@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - docker/frpc/**
+      - .github/workflows/docker-frpc.yml
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
