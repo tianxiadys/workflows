@@ -1,0 +1,20 @@
+name: Docker frpc
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Docker Setup
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker Build And Push
+        uses: docker/build-push-action@v5
+        with:
+          context: docker/frpc
+          push: false
