@@ -1,11 +1,11 @@
-name: Docker frps
+name: Docker rathole
 on:
   push:
     branches:
       - main
     paths:
-      - docker/frps/**
-      - .github/workflows/docker-frps.yml
+      - .github/workflows/docker-rathole.yml
+      - docker/rathole/**
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -25,6 +25,6 @@ jobs:
       - name: Docker Build And Push
         uses: docker/build-push-action@v5
         with:
-          context: docker/frps
+          context: docker/rathole
           push: true
-          tags: tianxiadys/frps:0.61.1a,tianxiadys/frps:latest
+          tags: tianxiadys/rathole:0.5.0,tianxiadys/rathole:latest
