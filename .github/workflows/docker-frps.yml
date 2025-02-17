@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - docker/frpc/**
+      - docker/frps/**
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -24,6 +24,6 @@ jobs:
       - name: Docker Build And Push
         uses: docker/build-push-action@v5
         with:
-          context: docker/frpc
+          context: docker/frps
           push: true
-          tags: tianxiadys/frpc:0.61.1,tianxiadys/frpc:latest
+          tags: tianxiadys/frps:0.61.1,tianxiadys/frps:latest
