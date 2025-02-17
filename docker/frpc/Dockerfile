@@ -13,4 +13,4 @@ mv /root/${ZIPNAME} /root/frp
 mkdir /etc/frp
 EOF
 
-CMD ["/root/frp/frpc", "--config-dir", "/etc/frp"]
+CMD ["/root/frp/frpc", "-c", "/etc/frp/frpc.toml"]
