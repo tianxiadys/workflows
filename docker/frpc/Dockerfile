@@ -1,10 +1,16 @@
 FROM alpine:3.21.3
 
-ENV VERSION 0.61.1
-ENV ARCH linux_amd64
-ENV ZIPNAME frp_${VERSION}_${ARCH}
-ENV ZIPURL https://github.com/fatedier/frp/releases/download/v${VERSION}/${ZIPNAME}.tar.gz
+ARG VERSION=0.61.1
+ARG ARCH=linux_amd64
+ARG ZIPNAME=frp_${VERSION}_${ARCH}
+ARG ZIPURL=https://github.com/fatedier/frp/releases/download/v${VERSION}/${ZIPNAME}.tar.gz
 
-RUN apk add --no-cache curl
-RUN curl -o /root/download.tgz ${ZIPURL}
-RUN tar -xzf /root/download.tgz -C /root
+RUN <<EOF
+apk add --no-cache curl
+curl -L -o /root/download.tgz ${ZIPURL}
+tar -xzf /root/download.tgz -C /root
+mv /root/${ZIPNAME} /root/frp
+mkdir /etc/frp
+EOF
+
+CMD ["/root/frp/frpc", "--config-dir", "/etc/frp"]
