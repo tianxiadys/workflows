@@ -9,8 +9,8 @@ apt update
 apt install -y curl unzip
 apt clean
 curl -L -o /root/download.zip ${ZIPURL}
-unzip /root/download.zip -d /root
-mv /root/rathole /bin/rathole
+unzip /root/download.zip rathole -d /root
+rm -f /root/download.zip
 mkdir /app
 EOF
 
