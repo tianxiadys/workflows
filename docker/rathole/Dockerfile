@@ -6,12 +6,12 @@ ARG ZIPURL=https://github.com/rapiz1/rathole/releases/download/${VERSION}/rathol
 
 RUN <<EOF
 apt update
-apt install -y curl unzip
-apt clean
+apt install -y curl unzip libssl3
 curl -L -o /root/download.zip ${ZIPURL}
-unzip /root/download.zip rathole -d /root
+unzip /root/download.zip rathole -d /bin
 rm -f /root/download.zip
-mkdir /app
+apt autoremove -y curl unzip
+apt clean
 EOF
 
 CMD ["/bin/rathole", "/app/rathole.toml"]
