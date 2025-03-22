@@ -7,7 +7,7 @@ on:
       - .github/workflows/docker-shadowsocks.yml
       - docker/shadowsocks/**
 jobs:
-  build-and-push:
+  build-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
