@@ -11,7 +11,7 @@ apt install -y curl unzip
 apt clean
 curl -L -o /root/download.zip ${ZIPURL}
 unzip /root/download.zip rathole -d /bin
-rm -f /root/download.zip
+rm -rf /root
 EOF
 
 CMD ["/bin/rathole", "/app/rathole.toml"]

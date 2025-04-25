@@ -9,5 +9,5 @@ RUN <<EOF
 apk add --no-cache curl
 curl -L -o /root/download.txz ${ZIPURL}
 tar -xJf /root/download.txz -C /bin
-rm -f /root/download.txz
+rm -rf /root
 EOF
