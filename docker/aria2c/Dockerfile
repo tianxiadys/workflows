@@ -5,7 +5,7 @@ ARG ZIPNAME=aria2-${VERSION}
 ARG ZIPURL=https://github.com/aria2/aria2/releases/download/release-${VERSION}/${ZIPNAME}.tar.gz
 
 RUN <<EOF
-apk add --no-cache curl gcc
+apk add --no-cache curl gcc make
 curl -L -o /root/download.tgz ${ZIPURL}
 tar -xzvf /root/download.tgz -C /root
 mkdir /root/build
@@ -13,6 +13,7 @@ cd /root/build
 sh /root/${ZIPNAME}/configure
 make
 ls
+cat config.log
 rm -rf /root
 EOF
 
