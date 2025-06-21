@@ -22,5 +22,5 @@ ln -fs /usr/local/ilogtail/${EXENAME} /bin/ilogtail
 rm -rf /root
 EOF
 
-COPY "entry.sh" "/entry.sh"
-ENTRYPOINT ["/entry.sh"]
+COPY "entry.sh" "/bin/entry.sh"
+CMD ["/bin/bash", "/bin/entry.sh"]
