@@ -1,0 +1,30 @@
+name: Docker LogTail
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/docker-logtail.yml
+      - docker/logtail/**
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Docker Setup
+        uses: docker/setup-buildx-action@v3
+
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_KEY }}
+
+      - name: Docker Build And Push
+        uses: docker/build-push-action@v5
+        with:
+          context: docker/rathole
+          push: true
+          tags: tianxiadys/logtail:0.1.0,tianxiadys/logtail:latest
