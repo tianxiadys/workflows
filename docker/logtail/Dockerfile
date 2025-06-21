@@ -1,4 +1,4 @@
-FROM alpine:3.21.3
+FROM debian:12.9
 
 ARG VERSION=2.1.10
 ARG ARCH=x86_64
@@ -10,7 +10,9 @@ ENV REGION=cn-hangzhou
 ENV USERID=userid
 
 RUN <<EOF
-apk add --no-cache curl
+apt update
+apt install -y curl
+apt clean
 curl -L -o /root/download.tgz ${ZIPURL}
 tar -zxvf /root/download.tgz -C /root
 mkdir /etc/ilogtail
