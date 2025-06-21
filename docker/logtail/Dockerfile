@@ -1,11 +1,11 @@
 FROM debian:12.9
 
 ARG VERSION=2.1.10
-ARG ARCH=x86_64
 ARG SYSTEM=linux64
+ARG ARCH=x86_64
+ARG EXENAME=ilogtail_${VERSION}
 ARG ZIPNAME=logtail-${SYSTEM}
 ARG ZIPURL=https://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/${SYSTEM}/${VERSION}/${ARCH}/${ZIPNAME}.tar.gz
-ARG EXENAME=ilogtail_${VERSION}
 ENV REGION=cn-hangzhou
 ENV USERID=userid
 
