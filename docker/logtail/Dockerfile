@@ -2,19 +2,22 @@ FROM alpine:3.21.3
 
 ARG VERSION=2.1.10
 ARG ARCH=x86_64
-ARG SYSTEM=linux64
-ARG ZIPNAME=logtail-${SYSTEM}
+ARG ZIPNAME=logtail-linux64
 ARG ZIPURL=https://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/${SYSTEM}/${VERSION}/${ARCH}/${ZIPNAME}.tar.gz
 
 RUN <<EOF
 apk add --no-cache curl
 curl -L -o /root/download.tgz ${ZIPURL}
-tar -xzvf /root/download.tgz -C /root
-ls -R /root
+tar -zxvf /root/download.tgz -C /root
+mv /root/logtail-linux64/conf /etc/ilogtail
+mv /root/logtail-linux64/bin /usr/local/ilogtail
+mv /root/logtail-linux64/resources /usr/local/ilogtail
+ls -R /usr/local/ilogtail
+ls -R /etc/ilogtail
 rm -rf /root
 EOF
 
-#https://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/linux64/2.1.10/x86_64/logtail-linux64.tar.gz
+#https://logtail-release-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/2.1.10/x86_64/logtail-linux64.tar.gz
 ##下载最新版本转发器
 #curl http://logtail-release-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/linux64/0.16.62/logtail-linux64.tar.gz -o /tmp/log.tgz
 ##解压文件到临时目录

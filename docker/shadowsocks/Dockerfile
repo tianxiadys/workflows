@@ -8,6 +8,6 @@ ARG ZIPURL=https://github.com/shadowsocks/shadowsocks-rust/releases/download/${V
 RUN <<EOF
 apk add --no-cache curl
 curl -L -o /root/download.txz ${ZIPURL}
-tar -xJf /root/download.txz -C /bin
+tar -Jxvf /root/download.txz -C /bin
 rm -rf /root
 EOF
