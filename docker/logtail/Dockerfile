@@ -15,14 +15,17 @@ apt install -y curl
 apt clean
 curl -L -o /root/download.tgz ${ZIPURL}
 tar -zxvf /root/download.tgz -C /root
-mkdir /etc/ilogtail
-mkdir /usr/local/ilogtail
-mv /root/${ZIPNAME}/conf/* /etc/ilogtail
-mv /root/${ZIPNAME}/bin/* /usr/local/ilogtail
-mv /root/${ZIPNAME}/resources/* /usr/local/ilogtail
-ln -fs /usr/local/ilogtail/${EXENAME} /bin/ilogtail
-rm -rf /root
+rm -f /root/download.tgz
 EOF
 
-COPY "entry.sh" "/bin/entry.sh"
-CMD ["/bin/sh", "/bin/entry.sh"]
+CMD [
+  "/root/${ZIPNAME}/bin/${EXENAME}",
+  "-https_ca_cert",
+  "/root/${ZIPNAME}/resources/ca-bundle.crt",
+  "-ilogtail_config",
+  "/root/${ZIPNAME}/conf/${REGION}/ilogtail_config.json",
+  "-ilogtail_daemon_flag",
+  "false",
+  "-ilogtail_user_defined_id_env_name",
+  "${USERID}"
+]

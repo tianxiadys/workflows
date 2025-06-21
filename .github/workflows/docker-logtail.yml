@@ -27,4 +27,4 @@ jobs:
         with:
           context: docker/logtail
           push: true
-          tags: tianxiadys/logtail:0.1.3,tianxiadys/logtail:latest
+          tags: tianxiadys/logtail:0.1.4,tianxiadys/logtail:latest
