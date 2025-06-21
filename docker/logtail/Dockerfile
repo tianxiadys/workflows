@@ -23,4 +23,4 @@ rm -rf /root
 EOF
 
 COPY "entry.sh" "/bin/entry.sh"
-CMD ["/bin/bash", "/bin/entry.sh"]
+CMD ["/bin/sh", "/bin/entry.sh"]
