@@ -25,6 +25,6 @@ jobs:
       - name: Docker Build And Push
         uses: docker/build-push-action@v5
         with:
-          context: docker/rathole
+          context: docker/logtail
           push: true
           tags: tianxiadys/logtail:0.1.0,tianxiadys/logtail:latest
